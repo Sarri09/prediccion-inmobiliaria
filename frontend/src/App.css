@@ -1,0 +1,204 @@
+/* App.css */
+
+/* --- VARIABLES --- */
+:root {
+  --primary: #2563eb;       /* Azul primario */
+  --primary-dark: #1e40af;
+  --bg-page: #f0f2f5;       /* Gris muy suave */
+  --bg-card: #ffffff;
+  --text-dark: #111827;
+  --text-gray: #6b7280;
+  --success-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%); /* Gradiente Verde */
+}
+
+/* --- BASE --- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.app-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.card {
+  background-color: var(--bg-card);
+  width: 100%;
+  max-width: 520px;
+  padding: 2.5rem;
+  border-radius: 20px; /* Bordes más redondeados */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+h1 {
+  text-align: center;
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  color: #1f2937;
+  letter-spacing: -0.025em;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-gray);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+/* --- FORMULARIO --- */
+.form-group { margin-bottom: 1.25rem; }
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.2s;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.row {
+  display: flex;
+  gap: 15px;
+}
+.row .form-group { flex: 1; }
+
+.debug-box {
+  margin-top: 5px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  background-color: #f3f4f6;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* --- BOTÓN --- */
+.btn-predict {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+.btn-predict:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-predict:active {
+  transform: translateY(0);
+}
+
+.btn-predict:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- RESULTADO PREMIUM (LA PARTE NUEVA) --- */
+.result-container {
+  margin-top: 2.5rem;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.result-box {
+  background: var(--success-gradient);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px -5px rgba(16, 185, 129, 0.4);
+}
+
+/* Efecto de brillo decorativo */
+.result-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.result-header-text {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.value-uf {
+  font-size: 3.5rem; /* GIGANTE */
+  font-weight: 800;
+  line-height: 1.1;
+  display: block;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.divider {
+  height: 1px;
+  background-color: rgba(255,255,255,0.3);
+  width: 60%;
+  margin: 1rem auto;
+}
+
+.value-clp {
+  font-size: 1.5rem;
+  font-weight: 500;
+  opacity: 0.95;
+  display: block;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .card { padding: 1.5rem; }
+  .value-uf { font-size: 2.8rem; }
+}
